@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoreRoom - Cloud Storage</title>
+    
+    <!-- Tailwind CSS & Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />                              
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Google Font - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-blue-300 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center min-h-screen">
+
+    <!-- Card Container -->
+    <div class="bg-white dark:bg-gray-800 shadow-2xl rounded-3xl p-8 max-w-sm w-full text-center transform transition duration-300 hover:scale-105">
+        <div class="flex justify-center mb-4">
+            <i class="ri-cloud-line text-6xl text-blue-500 dark:text-blue-400 animate-bounce"></i>
+        </div>
+        <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">StoreRoom</h1>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">Securely store and access your files anytime, anywhere.</p>
+        
+        <a  href="/user/login" class="mt-5 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-full flex items-center justify-center gap-2 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105">
+            <i class="ri-login-box-line"></i> Login
+        </a>
+
+        <div class="mt-5 text-sm text-gray-500 dark:text-gray-400">
+            Don't have an account? <a href="/user/register" class="text-blue-500 hover:underline">Sign Up</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+</html>

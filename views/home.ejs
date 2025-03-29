@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />  
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>                            
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      .pop {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 flex flex-col min-h-screen">
+    <main class="p-4 bg-gray-50 dark:bg-gray-900 flex-grow">
+      
+      <h1 class="text-white text-2xl">Hello, <%= user.username %></h1>
+
+      <button class="bg-blue-500 mt-6 ms-6 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="showPopUp()">Upload Your File</button>
+    
+      <div class="pop fixed top-0 left-0 h-screen w-screen flex items-center justify-center">
+        <form action="/upload" method="post" enctype="multipart/form-data" class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md w-full max-w-sm">
+          <div class="flex items-center justify-center w-full">
+            <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500">
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                </svg>
+                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+              </div>
+              <input id="dropzone-file" type="file" class="hidden" name="file" />
+            </label>
+          </div> 
+          <button class="bg-green-500 my-2 w-full hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Upload File</button>
+        </form>
+
+        <button class="absolute top-4 right-4 text-gray-400 dark:text-white text-2xl" onclick="hidePopUp()">
+          <i class="ri-close-large-line"></i>
+        </button>
+      </div>
+
+      <div class="files mt-10 flex flex-col gap-2 w-full px-2">
+        <hr class="border-red-500">
+        <strong class="text-white mb-4">Recently Added Files</strong>
+        <% for(let file of files){ %>
+          <div class="p-2 rounded-md bg-gray-300 flex items-center justify-between w-full max-w-full">
+            <h1 class="text-sm sm:text-base break-words w-[80%] sm:w-auto"><%= file.fileName %></h1>
+            <a href="/download/<%= file.path %>" download="<%= file.fileName %>" class="text-green-600 flex-shrink-0">
+              <i class="ri-folder-download-fill text-lg"></i>
+            </a>
+          </div>
+        <% } %>        
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center p-4 mt-4">
+      <a href="/" class="text-blue-400 hover:underline">Login with a different account</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script>
+      function showPopUp() {
+        document.querySelector(".pop").style.display = 'flex';
+      }
+      function hidePopUp() {
+        document.querySelector(".pop").style.display = 'none';
+      }
+    </script>
+  </body>
+</html>
