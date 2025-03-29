@@ -73,35 +73,11 @@ router.post(
 
 
 
-// router.get('/download/uploads/:path' , verifyJWT , async (req,res) => {
-//   const loggedInUserId = req.user.userId;
-//   const path = req.params.path;
-
-//   const file = await fileModel.findOne({
-//     user : loggedInUserId,
-//     path : path
-//   });
-
-//   if(!file){
-//     return res.status(401).json({
-//         message : "Unauthorized Access"
-//     });
-//   }
-
-//   const signedUrl = (await loadSupabase()).storage().bucket().file(path).getSignedUrl({
-//     action : 'read', 
-//     expires : Date.now() + 120 * 100
-//   })
-
-
-//   res.redirect(signedUrl[0]);
-// }) 
-
 
 
 router.get('/download/uploads/:path', verifyJWT, async (req, res) => {
     try {
-        console.log("Download request received!");
+        // console.log("Download request received!");
 
         const loggedInUserId = req.user.userId;
         const requestedPath = req.params.path;
